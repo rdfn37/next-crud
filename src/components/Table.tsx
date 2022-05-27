@@ -63,8 +63,6 @@ const Table = (props: TableProps) => {
     );
   }
 
-  console.log(props.clients);
-
   return (
     <table className="w-full rounded-xl overflow-hidden">
       <thead className="bg-gradient-to-r from-purple-500 to-purple-800 text-gray-100">

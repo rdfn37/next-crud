@@ -5,12 +5,14 @@ import Input from "./Input";
 
 interface FormProps {
   client?: Client;
+  cancel: () => void;
+  clientChange?: (client: Client) => void;
 }
 
 const Form = (props: FormProps) => {
   const id = props.client?.id;
   const [name, setName] = useState(props.client?.name ?? "");
-  const [age, setAge] = useState(props.client?.age ?? null);
+  const [age, setAge] = useState(props.client?.age ?? 0);
 
   return (
     <div>
@@ -29,10 +31,15 @@ const Form = (props: FormProps) => {
       </div>
       <div className="flex justify-end mt-3">
         <div className="mr-2">
-          <Button color="blue">{id ? "Update" : "Save"}</Button>
+          <Button
+            color="blue"
+            onClick={() => props.clientChange?.(new Client(name, +age, id))}
+          >
+            {id ? "Update" : "Save"}
+          </Button>
         </div>
         <div>
-          <Button>Cancel</Button>
+          <Button onClick={() => props.cancel()}>Cancel</Button>
         </div>
       </div>
     </div>
