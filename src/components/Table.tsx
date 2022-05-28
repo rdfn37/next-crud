@@ -13,7 +13,7 @@ const Table = (props: TableProps) => {
   function renderTableHeader() {
     return (
       <tr>
-        <th className="text-left p-4">ID</th>
+        {/* <th className="text-left p-4">ID</th> */}
         <th className="text-left p-4">Name</th>
         <th className="text-left p-4">Age</th>
         {showActions ? <th className="p-4">Actions</th> : null}
@@ -32,7 +32,7 @@ const Table = (props: TableProps) => {
               : "bg-gray-200 text-gray-700"
           }`}
         >
-          <td className="text-left p-4">{e.id}</td>
+          {/* <td className="text-left p-4">{e.id}</td> */}
           <td className="text-left p-4">{e.name}</td>
           <td className="text-left p-4">{e.age}</td>
           {showActions ? renderActions(e) : null}

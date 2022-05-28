@@ -3,7 +3,7 @@ import Client from "../../core/Client";
 import ClientRepository from "../../core/ClientRepository";
 
 export default class ClientCollection implements ClientRepository {
-  #conversor = {
+  private conversor = {
     toFirestore(client: Client) {
       return {
         name: client.name,
@@ -12,8 +12,8 @@ export default class ClientCollection implements ClientRepository {
     },
 
     fromFirestore(snapshot: firebase.firestore.QueryDocumentSnapshot, options: firebase.firestore.SnapshotOptions): Client {
-        const data = snapshot?.data(options)
-        return new Client(data.name, data.age, snapshot?.id)
+        const data = snapshot.data(options)
+        return new Client(data.name, data.age, snapshot.id)
     }
   };
 
@@ -38,6 +38,6 @@ export default class ClientCollection implements ClientRepository {
   }
 
   private collection() {
-      return firebase.firestore().collection('clients').withConverter(this.#conversor)
+      return firebase.firestore().collection('clients').withConverter(this.conversor)
   }
 }

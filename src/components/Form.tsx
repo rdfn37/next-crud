@@ -18,7 +18,8 @@ const Form = (props: FormProps) => {
     <div>
       {id ? (
         <div className="mb-4">
-          <Input text="ID" value={id} readonly />
+          {/* <Input text="ID" value={id} readonly /> */}
+          <span className="bg-purple-900 text-gray-200 p-2 rounded-xl">ID: {id}</span>
         </div>
       ) : (
         false
